@@ -15,7 +15,7 @@
   \***********************/
 /***/ (() => {
 
-eval("console.log(\"hello world\");\n\n//# sourceURL=webpack://employee-polls/./src/index.tsx?");
+eval("throw new Error(\"Module build failed (from ./node_modules/ts-loader/index.js):\\nError: TypeScript emitted no output for D:\\\\06. Udacity\\\\4. ReactJs\\\\employee-polls\\\\src\\\\index.tsx.\\n    at makeSourceMapAndFinish (D:\\\\06. Udacity\\\\4. ReactJs\\\\employee-polls\\\\node_modules\\\\ts-loader\\\\dist\\\\index.js:55:18)\\n    at successLoader (D:\\\\06. Udacity\\\\4. ReactJs\\\\employee-polls\\\\node_modules\\\\ts-loader\\\\dist\\\\index.js:42:5)\\n    at Object.loader (D:\\\\06. Udacity\\\\4. ReactJs\\\\employee-polls\\\\node_modules\\\\ts-loader\\\\dist\\\\index.js:23:5)\");\n\n//# sourceURL=webpack://employee-polls/./src/index.tsx?");
 
 /***/ })
 
@@ -24,7 +24,7 @@ eval("console.log(\"hello world\");\n\n//# sourceURL=webpack://employee-polls/./
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
 /******/ 	var __webpack_exports__ = {};
 /******/ 	__webpack_modules__["./src/index.tsx"]();
 /******/ 	
