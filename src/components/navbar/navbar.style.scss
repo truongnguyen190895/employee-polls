@@ -1,0 +1,27 @@
+.nav-bar-container {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f6f5f5;
+  padding: 0 20px;
+  .navigator {
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+
+    a {
+      text-decoration: none;
+
+      &.active {
+        border-bottom: 1px solid red;
+      }
+    }
+  }
+
+  .user-detail {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+  }
+}
