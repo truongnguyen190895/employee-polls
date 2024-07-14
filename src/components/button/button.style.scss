@@ -1,0 +1,18 @@
+.custom-button {
+  height: 40px;
+  min-width: 100px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  &.primary {
+    background-color: #0f67b1;
+    color: white;
+    &:active {
+      background-color: #3fa2f6;
+    }
+  }
+}

@@ -9,9 +9,21 @@
 
   .banner {
     width: 250px;
-
     img {
       display: block;
+    }
+  }
+
+  .login-container {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+    .login-control {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 100px 1fr;
     }
   }
 }
