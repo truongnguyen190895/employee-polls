@@ -5,11 +5,24 @@ export const Navbar = () => {
   return (
     <div className="nav-bar-container">
       <div className="navigator">
-        <NavLink to="/" className={(isActive) => (isActive ? "active" : "")}>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
           Home
         </NavLink>
-        <NavLink to="/leader-board">Leaderboard</NavLink>
-        <NavLink to="/new">New</NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to="/leader-board"
+        >
+          Leader board
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to="/new"
+        >
+          New
+        </NavLink>
       </div>
       <div className="user-detail">
         <div className="avatar">Avatar</div>
