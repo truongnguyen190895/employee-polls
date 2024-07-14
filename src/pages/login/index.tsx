@@ -2,12 +2,13 @@ import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import BannerImage from "@/assets/images/banner.png";
 import { Input, Button } from "@/components";
-import { useAppDispatch } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store";
 import { login } from "@/store/actions/authAction";
 import "./login.style.scss";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
+  const { error } = useAppSelector((state) => state.auth);
   const [user, setUser] = useState<{ userName: string; password: string }>({
     userName: "",
     password: "",
@@ -48,6 +49,11 @@ const LoginPage = () => {
             onChange={handleChange}
           />
         </div>
+        {error ? (
+          <small className="error-login">
+            Username or password is incorrect
+          </small>
+        ) : null}
       </div>
       <Button onClick={handleLogin}>Login</Button>
     </div>

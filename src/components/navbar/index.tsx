@@ -1,7 +1,16 @@
 import { NavLink } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { logout } from "@/store/actions/authAction";
 import "./navbar.style.scss";
 
 export const Navbar = () => {
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <div className="nav-bar-container">
       <div className="navigator">
@@ -25,8 +34,12 @@ export const Navbar = () => {
         </NavLink>
       </div>
       <div className="user-detail">
-        <div className="avatar">Avatar</div>
-        <div className="log-out">Log out</div>
+        <div className="avatar">
+          <img src={user?.avatar} alt="avatar" width="100%" />
+        </div>
+        <div className="log-out" onClick={handleLogout}>
+          Log out
+        </div>
       </div>
     </div>
   );

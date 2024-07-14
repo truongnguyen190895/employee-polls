@@ -3,11 +3,13 @@ export interface User {
   id: string;
   username: string;
   password: string;
+  avatar?: string;
 }
 
 export interface AuthState {
   isAuthenticated: boolean;
   user: User | null;
+  error: boolean | null;
 }
 
 export const LOGIN = "LOGIN";
