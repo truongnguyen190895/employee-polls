@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import BannerImage from "@/assets/images/banner.png";
 import { Input, Button } from "@/components";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { login } from "@/store/actions/authAction";
+import { _getUsers } from "@/_DATA";
 import "./login.style.scss";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
   const { error } = useAppSelector((state) => state.auth);
+  const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = useState<{ userName: string; password: string }>({
     userName: "",
     password: "",
@@ -19,10 +21,31 @@ const LoginPage = () => {
   };
 
   const handleLogin = () => {
-    dispatch(
-      login({ id: uuid(), username: user.userName, password: user.password })
-    );
+    setLoading(true);
+    _getUsers()
+      .then((data) => {
+        if (
+          data[user.userName] &&
+          data[user.userName].password === user.password
+        ) {
+          const loggedInUser = data[user.userName];
+
+          dispatch(
+            login({
+              id: loggedInUser.id,
+              username: loggedInUser.name,
+              password: user.password,
+            })
+          );
+          setLoading(false);
+        }
+      })
+      .finally(() => setLoading(false));
   };
+
+  if (loading) {
+    return <h3>Loading...</h3>;
+  }
 
   return (
     <div className="login-page-container">

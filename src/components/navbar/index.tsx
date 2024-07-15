@@ -37,6 +37,7 @@ export const Navbar = () => {
         <div className="avatar">
           <img src={user?.avatar} alt="avatar" width="100%" />
         </div>
+        <div>{user?.username}</div>
         <div className="log-out" onClick={handleLogout}>
           Log out
         </div>
