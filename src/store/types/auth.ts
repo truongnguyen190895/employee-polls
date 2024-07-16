@@ -1,10 +1,4 @@
-// src/store/types.ts
-export interface User {
-  id: string;
-  username: string;
-  password: string;
-  avatar?: string;
-}
+import type { User } from "@/_DATA";
 
 export interface AuthState {
   isAuthenticated: boolean;

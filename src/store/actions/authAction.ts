@@ -1,4 +1,5 @@
-import { LOGIN, LOGOUT, AuthActionTypes, User } from "../types/auth";
+import type { User } from "@/_DATA";
+import { LOGIN, LOGOUT, AuthActionTypes } from "../types/auth";
 
 export const login = (user: User): AuthActionTypes => ({
   type: LOGIN,

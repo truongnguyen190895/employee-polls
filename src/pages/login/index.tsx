@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { v4 as uuid } from "uuid";
 import BannerImage from "@/assets/images/banner.png";
 import { Input, Button } from "@/components";
 import { useAppDispatch, useAppSelector } from "@/store";
@@ -9,7 +8,7 @@ import "./login.style.scss";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
-  const { error } = useAppSelector((state) => state.auth);
+  const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = useState<{ userName: string; password: string }>({
     userName: "",
@@ -30,22 +29,15 @@ const LoginPage = () => {
         ) {
           const loggedInUser = data[user.userName];
 
-          dispatch(
-            login({
-              id: loggedInUser.id,
-              username: loggedInUser.name,
-              password: user.password,
-            })
-          );
+          dispatch(login(loggedInUser));
           setLoading(false);
+          setError(false);
+        } else {
+          setError(true);
         }
       })
       .finally(() => setLoading(false));
   };
-
-  if (loading) {
-    return <h3>Loading...</h3>;
-  }
 
   return (
     <div className="login-page-container">
@@ -53,7 +45,7 @@ const LoginPage = () => {
       <div className="banner">
         <img src={BannerImage} alt="banner" width="100%" />
       </div>
-      <h3>Login</h3>
+      <h3>{loading ? "loading..." : "Login"}</h3>
       <div className="login-container">
         <div className="login-control">
           <label>User</label>
