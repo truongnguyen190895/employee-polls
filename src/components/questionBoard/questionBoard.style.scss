@@ -1,0 +1,16 @@
+.question-board-container {
+  width: 100%;
+
+  .label-container {
+    border: 1px solid #eeedeb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .question-list-container {
+    border: 1px solid #eeedeb;
+    border-top: none;
+    padding: 10px;
+  }
+}
