@@ -46,6 +46,7 @@ export const QuestionBoard = ({ variant }: QuestionBoardProps) => {
         {filterQuestionByVariant().map((question) => (
           <Question
             key={question.id}
+            id={question.id}
             author={question.author}
             timestamp={question.timestamp}
           />

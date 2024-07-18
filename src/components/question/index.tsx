@@ -1,15 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { Button } from "../button";
 
 import "./question.style.scss";
 
 interface QuestionProps {
-  id?: string;
+  id: string;
   author: string;
   timestamp: number;
 }
 
-export const Question = ({ author, timestamp }: QuestionProps) => {
+export const Question = ({ id, author, timestamp }: QuestionProps) => {
+  const navigate = useNavigate();
+
+  const handleViewQuestionDetail = () => {
+    navigate(`/question/${id}`);
+  };
+
   return (
     <div className="question-container">
       <div className="description">
@@ -19,7 +26,7 @@ export const Question = ({ author, timestamp }: QuestionProps) => {
         </p>
       </div>
       <div className="action">
-        <Button>View</Button>
+        <Button onClick={handleViewQuestionDetail}>View</Button>
       </div>
     </div>
   );

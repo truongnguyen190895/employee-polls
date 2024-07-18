@@ -3,6 +3,7 @@ import LoginPage from "@/pages/login";
 import LeaderBoard from "@/pages/leaderBoard";
 import New from "@/pages/new";
 import Home from "@/pages/home";
+import QuestionDetailPage from "@/pages/questionDetail";
 import { PublicRoute, PrivateRoute, Layout } from "@/components";
 
 export const routers = createBrowserRouter([
@@ -25,6 +26,10 @@ export const routers = createBrowserRouter([
       {
         path: "/new",
         element: <New />,
+      },
+      {
+        path: "/question/:questionId",
+        element: <QuestionDetailPage />,
       },
     ],
   },
