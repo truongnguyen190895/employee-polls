@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { _getQuestions } from "@/_DATA";
+import { _getQuestions, _getUsers } from "@/_DATA";
 import { useAppSelector, useAppDispatch } from "@/store";
-import { getAllQuestion } from "@/store/actions/questionAction";
+import { getAllQuestion, getAllUsers } from "@/store/actions/questionAction";
 import { useEffect } from "react";
 
 export const PrivateRoute = () => {
@@ -14,6 +14,10 @@ export const PrivateRoute = () => {
         (key) => response[key]
       );
       dispatch(getAllQuestion(currentQuestions));
+    });
+    _getUsers().then((response) => {
+      const allUserArray = Object.keys(response).map((key) => response[key]);
+      dispatch(getAllUsers(allUserArray));
     });
   }, []);
   return userDetail.isAuthenticated ? <Outlet /> : <Navigate to="/login" />;

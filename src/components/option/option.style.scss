@@ -1,0 +1,32 @@
+.option-container {
+  display: flex;
+  flex-direction: column;
+
+  .text-container {
+    min-height: 50px;
+    border: 1px solid #eeeeee;
+    border-bottom: none;
+    padding: 5px 30px;
+    border-radius: 5px 5px 0 0;
+    p {
+      font-weight: 600;
+    }
+
+    .statistic {
+      font-size: 14px;
+      font-weight: 400;
+      font-style: italic;
+    }
+  }
+
+  .action {
+    background-color: #508c9b;
+    height: 40px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 0 0 5px 5px;
+  }
+}

@@ -4,11 +4,13 @@ import {
   QuestionActionTypes,
   GET_ALL_QUESTIONS,
   GET_ACTIVE_QUESTION,
+  GET_ALL_USERS,
 } from "../types/question";
 
 const initialState: QuestionState = {
   questions: [],
   activeQuestionId: null,
+  allUsers: [],
 };
 
 export const questionReducer = (
@@ -20,6 +22,8 @@ export const questionReducer = (
       return { ...state, questions: action.payload };
     case GET_ACTIVE_QUESTION:
       return { ...state, activeQuestionId: action.payload };
+    case GET_ALL_USERS:
+      return { ...state, allUsers: action.payload };
 
     default:
       return { ...state };

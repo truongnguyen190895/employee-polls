@@ -1,24 +1,30 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppSelector } from "@/store";
 import ArrowBackIcon from "@/assets/icons/arrow-back.svg";
+import { Option } from "@/components";
 import "./questionDetail.style.scss";
 
 const QuestionDetailPage = () => {
   const { questionId } = useParams<{ questionId: string }>();
-  const { questions } = useAppSelector((state) => state.question);
+  const { questions, allUsers } = useAppSelector((state) => state.question);
+  const navigate = useNavigate();
   const activeQuestion = questions.find(
     (question) => question.id === questionId
   );
-  const navigate = useNavigate();
+
+  if (!activeQuestion) {
+    return <></>;
+  }
+  const { author, optionOne, optionTwo } = activeQuestion;
+  const pollCreatedBy = allUsers.find(
+    (user) => user.id === activeQuestion.author
+  );
+
+  const questionTotalVotes = optionOne.votes.length + optionTwo.votes.length;
 
   const handleGoBack = () => {
     navigate("/");
   };
-  console.log("questions ", questions);
-  console.log("activeQuestion ", activeQuestion);
-  if (!activeQuestion) {
-    return <></>;
-  }
 
   return (
     <div className="question-detail-container">
@@ -29,9 +35,22 @@ const QuestionDetailPage = () => {
         </div>
       </div>
       <div className="question-detail">
-        <h3>Poll by {activeQuestion.author}</h3>
+        <h3>Poll by {author}</h3>
         <div className="avatar">
-          <img src="" alt="" />
+          <img src={pollCreatedBy?.avatarURL} alt="user-avatar" width="100%" />
+        </div>
+        <p>Would You Rather</p>
+        <div className="options">
+          <Option
+            text={optionOne.text}
+            totalVote={optionOne.votes.length}
+            percentage={optionOne.votes.length / questionTotalVotes}
+          />
+          <Option
+            text={optionTwo.text}
+            totalVote={optionTwo.votes.length}
+            percentage={optionTwo.votes.length / questionTotalVotes}
+          />
         </div>
       </div>
     </div>

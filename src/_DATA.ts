@@ -52,7 +52,7 @@ let users: { [key: string]: User } = {
     id: "zoshikanlu",
     password: "pass246",
     name: "Zenobia Oshikanlu",
-    avatarURL: "/images/avatar-3.png",
+    avatarURL: "/images/avatar-4.png",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
     },
@@ -86,7 +86,7 @@ let questions: { [key: string]: Question } = {
     author: "sarahedo",
     timestamp: 1467166872634,
     optionOne: {
-      votes: ["sarahedo"],
+      votes: [],
       text: "Build our new application with Javascript",
     },
     optionTwo: {

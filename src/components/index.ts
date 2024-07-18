@@ -5,3 +5,4 @@ export * from "./button";
 export * from "./layout";
 export * from "./navbar";
 export * from "./questionBoard";
+export * from "./option";

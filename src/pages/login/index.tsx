@@ -28,7 +28,6 @@ const LoginPage = () => {
           data[user.userName].password === user.password
         ) {
           const loggedInUser = data[user.userName];
-
           dispatch(login(loggedInUser));
           setLoading(false);
           setError(false);
