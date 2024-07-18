@@ -13,6 +13,7 @@ interface QuestionBoardProps {
 export const QuestionBoard = ({ variant }: QuestionBoardProps) => {
   const dispatch = useAppDispatch();
   const { questions } = useAppSelector((state) => state.question);
+  const { user } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     _getQuestions().then((response) => {
@@ -24,17 +25,18 @@ export const QuestionBoard = ({ variant }: QuestionBoardProps) => {
   }, []);
 
   const filterQuestionByVariant = () => {
-    if (variant === "done") {
-      return questions.filter(
-        (question) =>
-          question.optionOne.votes.length + question.optionTwo.votes.length ===
-          4
-      );
-    }
-    return questions.filter(
-      (question) =>
-        question.optionOne.votes.length + question.optionTwo.votes.length !== 4
-    );
+    const userId = user?.id ?? "";
+
+    return questions.filter((question) => {
+      const hasVotedOptionOne = question.optionOne.votes.includes(userId);
+      const hasVotedOptionTwo = question.optionTwo.votes.includes(userId);
+
+      if (variant === "done") {
+        return hasVotedOptionOne || hasVotedOptionTwo;
+      } else {
+        return !hasVotedOptionOne && !hasVotedOptionTwo;
+      }
+    });
   };
 
   return (
