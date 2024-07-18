@@ -43,12 +43,12 @@ const QuestionDetailPage = () => {
         <div className="options">
           <Option
             text={optionOne.text}
-            totalVote={optionOne.votes.length}
+            votes={optionOne.votes}
             percentage={optionOne.votes.length / questionTotalVotes}
           />
           <Option
             text={optionTwo.text}
-            totalVote={optionTwo.votes.length}
+            votes={optionTwo.votes}
             percentage={optionTwo.votes.length / questionTotalVotes}
           />
         </div>

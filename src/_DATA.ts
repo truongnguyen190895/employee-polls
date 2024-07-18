@@ -86,7 +86,7 @@ let questions: { [key: string]: Question } = {
     author: "sarahedo",
     timestamp: 1467166872634,
     optionOne: {
-      votes: [],
+      votes: ["sarahedo"],
       text: "Build our new application with Javascript",
     },
     optionTwo: {

@@ -1,6 +1,10 @@
 .option-container {
   display: flex;
   flex-direction: column;
+  width: 500px;
+  &.selected {
+    background-color: antiquewhite;
+  }
 
   .text-container {
     min-height: 50px;
