@@ -1,5 +1,4 @@
 import { AuthState, AuthActionTypes, LOGIN, LOGOUT } from "../types/auth";
-import type { User } from "@/_DATA";
 
 const savedUserJson = localStorage.getItem("user");
 

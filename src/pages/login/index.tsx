@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import BannerImage from "@/assets/images/banner.png";
-import { Input, Button } from "@/components";
-import { useAppDispatch, useAppSelector } from "@/store";
-import { login } from "@/store/actions/authAction";
 import { _getUsers } from "@/_DATA";
+import BannerImage from "@/assets/images/banner.png";
+import { Button, Input } from "@/components";
+import { useAppDispatch } from "@/store";
+import { login } from "@/store/actions/authAction";
+import { useState } from "react";
 import "./login.style.scss";
 
 const LoginPage = () => {

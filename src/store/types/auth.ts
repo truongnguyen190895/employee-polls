@@ -1,9 +1,14 @@
-import type { User } from "@/_DATA";
+import type { User, Question } from "@/_DATA";
 
 export interface AuthState {
   isAuthenticated: boolean;
   user: User | null;
   error: boolean | null;
+}
+
+export interface QuestionState {
+  total?: number;
+  questions: Question[];
 }
 
 export const LOGIN = "LOGIN";

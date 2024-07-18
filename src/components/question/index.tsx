@@ -3,13 +3,19 @@ import { Button } from "../button";
 
 import "./question.style.scss";
 
-export const Question = () => {
+interface QuestionProps {
+  id?: string;
+  author: string;
+  timestamp: number;
+}
+
+export const Question = ({ author, timestamp }: QuestionProps) => {
   return (
     <div className="question-container">
       <div className="description">
-        <h4>sarahedo</h4>
+        <h4>{author}</h4>
         <p className="time-stamp">
-          {dayjs(1468479767190).format("hh:mm A | MM/DD/YYYY")}
+          {dayjs(timestamp).format("hh:mm A | MM/DD/YYYY")}
         </p>
       </div>
       <div className="action">

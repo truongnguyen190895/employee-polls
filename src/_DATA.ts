@@ -69,7 +69,7 @@ interface Base {
   [key: string]: any;
 }
 
-interface Question extends Base {
+export interface Question extends Base {
   id: string;
   author: string;
   timestamp: number;
@@ -175,7 +175,7 @@ export function _getUsers() {
 }
 
 export function _getQuestions() {
-  return new Promise((resolve) => {
+  return new Promise<{ [key: string]: Question }>((resolve) => {
     setTimeout(() => resolve({ ...questions }), 1000);
   });
 }
