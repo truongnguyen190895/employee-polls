@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/store";
-import { getAllQuestion } from "@/store/actions/questionAction";
-import { _getQuestions } from "@/_DATA";
+import { useAppSelector } from "@/store";
 import { Question } from "../question";
 import "./questionBoard.style.scss";
 
@@ -11,18 +8,8 @@ interface QuestionBoardProps {
 }
 
 export const QuestionBoard = ({ variant }: QuestionBoardProps) => {
-  const dispatch = useAppDispatch();
   const { questions } = useAppSelector((state) => state.question);
   const { user } = useAppSelector((state) => state.auth);
-
-  useEffect(() => {
-    _getQuestions().then((response) => {
-      const currentQuestions = Object.keys(response).map(
-        (key) => response[key]
-      );
-      dispatch(getAllQuestion(currentQuestions));
-    });
-  }, []);
 
   const filterQuestionByVariant = () => {
     const userId = user?.id ?? "";

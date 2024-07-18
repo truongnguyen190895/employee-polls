@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { Button } from "../button";
-
+import { useAppDispatch } from "@/store";
+import { getActiveQuestion } from "@/store/actions/questionAction";
 import "./question.style.scss";
 
 interface QuestionProps {
@@ -12,9 +13,11 @@ interface QuestionProps {
 
 export const Question = ({ id, author, timestamp }: QuestionProps) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleViewQuestionDetail = () => {
-    navigate(`/question/${id}`);
+    dispatch(getActiveQuestion(id));
+    navigate(`/questions/${id}`);
   };
 
   return (

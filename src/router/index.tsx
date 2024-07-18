@@ -28,7 +28,7 @@ export const routers = createBrowserRouter([
         element: <New />,
       },
       {
-        path: "/question/:questionId",
+        path: "/questions/:questionId",
         element: <QuestionDetailPage />,
       },
     ],
