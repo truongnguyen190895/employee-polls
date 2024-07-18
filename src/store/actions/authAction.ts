@@ -1,5 +1,10 @@
-import type { User } from "@/_DATA";
-import { LOGIN, LOGOUT, AuthActionTypes } from "../types/auth";
+import type { User, Answers } from "@/_DATA";
+import {
+  LOGIN,
+  LOGOUT,
+  AuthActionTypes,
+  UPDATE_USER_ANSWERS,
+} from "../types/auth";
 
 export const login = (user: User): AuthActionTypes => ({
   type: LOGIN,
@@ -8,4 +13,9 @@ export const login = (user: User): AuthActionTypes => ({
 
 export const logout = (): AuthActionTypes => ({
   type: LOGOUT,
+});
+
+export const updateUserAnswers = (answers: Answers): AuthActionTypes => ({
+  type: UPDATE_USER_ANSWERS,
+  payload: answers,
 });

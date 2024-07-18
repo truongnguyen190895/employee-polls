@@ -1,4 +1,4 @@
-interface Answers {
+export interface Answers {
   [key: string]: string;
 }
 
@@ -235,7 +235,7 @@ export function _saveQuestionAnswer({
   qid,
   answer,
 }: {
-  authedUser: any;
+  authedUser: string;
   qid: string;
   answer: string;
 }) {

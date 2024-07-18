@@ -42,11 +42,15 @@ const QuestionDetailPage = () => {
         <p>Would You Rather</p>
         <div className="options">
           <Option
+            variant="optionOne"
+            questionId={questionId ?? ""}
             text={optionOne.text}
             votes={optionOne.votes}
             percentage={optionOne.votes.length / questionTotalVotes}
           />
           <Option
+            variant="optionTwo"
+            questionId={questionId ?? ""}
             text={optionTwo.text}
             votes={optionTwo.votes}
             percentage={optionTwo.votes.length / questionTotalVotes}

@@ -1,4 +1,11 @@
-import { AuthState, AuthActionTypes, LOGIN, LOGOUT } from "../types/auth";
+import type { User } from "@/_DATA";
+import {
+  AuthActionTypes,
+  AuthState,
+  LOGIN,
+  LOGOUT,
+  UPDATE_USER_ANSWERS,
+} from "../types/auth";
 
 const savedUserJson = localStorage.getItem("user");
 
@@ -31,6 +38,13 @@ export const authReducer = (
         user: null,
         error: false,
       };
+
+    case UPDATE_USER_ANSWERS:
+      const refreshedUser: AuthState = {
+        ...state,
+        user: { ...state.user, answers: { ...action.payload } } as User,
+      };
+      return refreshedUser;
     default:
       return state;
   }

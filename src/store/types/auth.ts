@@ -1,4 +1,4 @@
-import type { User, Question } from "@/_DATA";
+import type { User, Question, Answers } from "@/_DATA";
 
 export interface AuthState {
   isAuthenticated: boolean;
@@ -13,6 +13,7 @@ export interface QuestionState {
 
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const UPDATE_USER_ANSWERS = "UPDATE_USER_ANSWERS";
 
 interface LoginSuccessAction {
   type: typeof LOGIN;
@@ -23,4 +24,12 @@ interface LogoutAction {
   type: typeof LOGOUT;
 }
 
-export type AuthActionTypes = LoginSuccessAction | LogoutAction;
+interface UpdateUserAnswers {
+  type: typeof UPDATE_USER_ANSWERS;
+  payload: Answers;
+}
+
+export type AuthActionTypes =
+  | LoginSuccessAction
+  | LogoutAction
+  | UpdateUserAnswers;
