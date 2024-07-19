@@ -4,8 +4,8 @@ import "./home.style.scss";
 const Home = () => {
   return (
     <div className="home-page-container">
-      <QuestionBoard variant="new" questions={[]} />
-      <QuestionBoard variant="done" questions={[]} />
+      <QuestionBoard variant="new" />
+      <QuestionBoard variant="done" />
     </div>
   );
 };

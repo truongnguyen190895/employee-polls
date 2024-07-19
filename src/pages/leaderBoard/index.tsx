@@ -3,6 +3,7 @@ import "./leaderBoard.style.scss";
 
 const LeaderBoard = () => {
   const { allUsers } = useAppSelector((state) => state.question);
+  console.log("allUsers ", allUsers);
   return (
     <div className="leader-board">
       <table>

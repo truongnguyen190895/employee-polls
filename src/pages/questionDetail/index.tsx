@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppSelector } from "@/store";
 import ArrowBackIcon from "@/assets/icons/arrow-back.svg";
@@ -8,6 +9,8 @@ const QuestionDetailPage = () => {
   const { questionId } = useParams<{ questionId: string }>();
   const { questions, allUsers } = useAppSelector((state) => state.question);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState<boolean>(false);
+
   const activeQuestion = questions.find(
     (question) => question.id === questionId
   );
@@ -39,7 +42,8 @@ const QuestionDetailPage = () => {
         <div className="avatar">
           <img src={pollCreatedBy?.avatarURL} alt="user-avatar" width="100%" />
         </div>
-        <p>Would You Rather</p>
+        {loading ? <p>loading...</p> : <p>Would You Rather</p>}
+
         <div className="options">
           <Option
             variant="optionOne"
@@ -47,6 +51,7 @@ const QuestionDetailPage = () => {
             text={optionOne.text}
             votes={optionOne.votes}
             percentage={optionOne.votes.length / questionTotalVotes}
+            onClick={(state) => setLoading(state)}
           />
           <Option
             variant="optionTwo"
@@ -54,6 +59,7 @@ const QuestionDetailPage = () => {
             text={optionTwo.text}
             votes={optionTwo.votes}
             percentage={optionTwo.votes.length / questionTotalVotes}
+            onClick={(state) => setLoading(state)}
           />
         </div>
       </div>

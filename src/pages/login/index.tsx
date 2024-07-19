@@ -19,23 +19,29 @@ const LoginPage = () => {
     setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleLogin = () => {
-    setLoading(true);
-    _getUsers()
-      .then((data) => {
-        if (
-          data[user.userName] &&
-          data[user.userName].password === user.password
-        ) {
-          const loggedInUser = data[user.userName];
-          dispatch(login(loggedInUser));
-          setLoading(false);
-          setError(false);
-        } else {
-          setError(true);
-        }
-      })
-      .finally(() => setLoading(false));
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+    const { userName, password } = user;
+    if (!userName || !password) {
+      window.alert("Please fill in user name and password");
+    } else {
+      setLoading(true);
+      _getUsers()
+        .then((data) => {
+          if (
+            data[user.userName] &&
+            data[user.userName].password === user.password
+          ) {
+            const loggedInUser = data[user.userName];
+            dispatch(login(loggedInUser));
+            setLoading(false);
+            setError(false);
+          } else {
+            setError(true);
+          }
+        })
+        .finally(() => setLoading(false));
+    }
   };
 
   return (
@@ -45,31 +51,37 @@ const LoginPage = () => {
         <img src={BannerImage} alt="banner" width="100%" />
       </div>
       <h3>{loading ? "loading..." : "Login"}</h3>
-      <div className="login-container">
-        <div className="login-control">
-          <label>User</label>
-          <Input
-            name="userName"
-            value={user.userName}
-            onChange={handleChange}
-          />
+      <form>
+        <div className="login-container">
+          <div className="login-control">
+            <label>User</label>
+            <Input
+              name="userName"
+              value={user.userName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="login-control">
+            <label>Password</label>
+            <Input
+              name="password"
+              type="password"
+              value={user.password}
+              onChange={handleChange}
+            />
+          </div>
+          {error ? (
+            <small className="error-login">
+              Username or password is incorrect
+            </small>
+          ) : null}
         </div>
-        <div className="login-control">
-          <label>Password</label>
-          <Input
-            name="password"
-            type="password"
-            value={user.password}
-            onChange={handleChange}
-          />
+        <div className="form-action">
+          <Button onClick={handleLogin} type="submit">
+            Login
+          </Button>
         </div>
-        {error ? (
-          <small className="error-login">
-            Username or password is incorrect
-          </small>
-        ) : null}
-      </div>
-      <Button onClick={handleLogin}>Login</Button>
+      </form>
     </div>
   );
 };

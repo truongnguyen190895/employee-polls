@@ -4,7 +4,6 @@ import "./questionBoard.style.scss";
 
 interface QuestionBoardProps {
   variant: "new" | "done";
-  questions?: any;
 }
 
 export const QuestionBoard = ({ variant }: QuestionBoardProps) => {
@@ -32,14 +31,16 @@ export const QuestionBoard = ({ variant }: QuestionBoardProps) => {
         <h3>{variant === "new" ? "New Questions" : "Done"}</h3>
       </div>
       <div className="question-list-container">
-        {filterQuestionByVariant().map((question) => (
-          <Question
-            key={question.id}
-            id={question.id}
-            author={question.author}
-            timestamp={question.timestamp}
-          />
-        ))}
+        {filterQuestionByVariant()
+          .sort((a, b) => b.timestamp - a.timestamp)
+          .map((question) => (
+            <Question
+              key={question.id}
+              id={question.id}
+              author={question.author}
+              timestamp={question.timestamp}
+            />
+          ))}
       </div>
     </div>
   );

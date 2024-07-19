@@ -31,4 +31,10 @@
       grid-template-columns: 100px 1fr;
     }
   }
+
+  .form-action {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
