@@ -4,7 +4,7 @@
   "description": "second project for Udacity ReactJs course",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --config jest.config.js",
     "start": "webpack-dev-server --config webpack.config.js",
     "build:dev": "webpack --config webpack.config.js"
   },
