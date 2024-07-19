@@ -24,7 +24,7 @@ export const routers = createBrowserRouter([
         element: <LeaderBoard />,
       },
       {
-        path: "/new",
+        path: "/add",
         element: <New />,
       },
       {

@@ -28,7 +28,7 @@ export const Navbar = () => {
         </NavLink>
         <NavLink
           className={({ isActive }) => (isActive ? "active" : "")}
-          to="/new"
+          to="/add"
         >
           New
         </NavLink>

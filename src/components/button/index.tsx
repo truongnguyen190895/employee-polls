@@ -3,17 +3,25 @@ import "./button.style.scss";
 
 interface ButtonProps {
   variant?: "primary" | "warning" | "error";
+  type?: "submit";
   children?: React.ReactNode | string;
-  onClick?: () => void;
+  className?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export const Button = ({
   variant = "primary",
   children,
+  type,
+  className,
   onClick,
 }: ButtonProps) => {
   return (
-    <button className={`custom-button ${variant}`} onClick={onClick}>
+    <button
+      type={type}
+      className={`custom-button ${variant} ${className}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

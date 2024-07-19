@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./input.style.scss";
 
 interface InputProps {
@@ -6,9 +5,10 @@ interface InputProps {
   type?: "text" | "password";
   placeHolder?: string;
   name?: string;
+  id?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = (props: InputProps) => {
-  return <input className="custom-input" {...props} />;
+export const Input = ({ placeHolder, ...rest }: InputProps) => {
+  return <input className="custom-input" placeholder={placeHolder} {...rest} />;
 };
